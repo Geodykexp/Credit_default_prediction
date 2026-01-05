@@ -1,0 +1,53 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0c4c2ec8-bba6-4df0-a19a-514052f9b75d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "watchlist = [(dtrain,\"train\"), (dval, \"val\")]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b8946c50-f8da-4869-af36-211d55eb6eb4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "xgb_params = {\n",
+    "    'eta': 0.1, \n",
+    "    'max_depth': 6,\n",
+    "    'min_child_weight': 1,\n",
+    "    \n",
+    "    'objective': 'binary:logistic',\n",
+    "    'eval_metric': 'auc',\n",
+    "    \n",
+    "    'nthread': 8,\n",
+    "    'seed': 1,\n",
+    "    'verbosity': 1,\n",
+    "\n",
+    "    'subsample': 0.8,\n",
+    "    'colsample_bytree': 0.8,\n",
+    "    'random_state': RANDOM_STATE,\n",
+    "    \n",
+    "}\n",
+    "model = xgb.train(xgb_params,\n",
+    "                  dtrain,\n",
+    "                  early_stopping_rounds=10,\n",
+    "                  verbose_eval = 2,\n",
+    "                  evals = watchlist,\n",
+    "                  num_boost_round=200)"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
