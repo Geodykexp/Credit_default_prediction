@@ -1,6 +1,8 @@
 # Credit Card Default Prediction
 
-A production-ready FastAPI service and AWS Lambda function for predicting credit card default using the UCI Credit Card dataset. The repository includes:
+This project predicts whether a client will default on their next payment using the UCI Credit Card dataset. The project includes a FastAPI service and AWS Lambda function for inference. The repository also contains notebooks and scripts used during model development.
+
+The repository includes:
 
 - An online inference API with FastAPI (local or containerized)
 - A serverless inference handler for AWS Lambda
