@@ -3,12 +3,13 @@ name = "credit-card-client-dataset-prediction"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.128.0",
     "pandas>=2.3.3",
     "scikit-learn>=1.8.0",
     "uvicorn>=0.40.0",
+    "xgboost",
 ]
 
 [dependency-groups]

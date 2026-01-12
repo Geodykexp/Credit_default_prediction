@@ -324,7 +324,7 @@ The Dockerfile supports two workflows:
   - Runs `uvicorn main:app` on port 8000
 
 - AWS Lambda (active section):
-  - Base: public.ecr.aws/lambda/python:3.14
+  - Base: public.ecr.aws/lambda/python:3.12
   - Installs dependencies via uv using pyproject.toml and uv.lock
   - Copies Lambda_function.py and credit_card_client_dataset.pkl
   - Entry point: Lambda_function.lambda_handler
@@ -340,8 +340,8 @@ To build the Lambda image (as currently configured):
 
 
 ## AWS Lambda Deployment
-1. Build a Lambda-compatible image:
-   - `docker build -t <your-ecr-repo>:<tag> .`
+1. Build a Lambda-compatible image for the correct architecture:
+   - `docker build --platform linux/amd64 -t <your-ecr-repo>:<tag> .`
 2. Authenticate to ECR and push image.
 3. Create or update a Lambda function with the image.
 4. Set the handler to `Lambda_function.lambda_handler` (already set by CMD).
